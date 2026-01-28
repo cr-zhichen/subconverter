@@ -692,7 +692,6 @@ proxyToClash(std::vector<Proxy> &nodes, YAML::Node &yamlnode, const ProxyGroupCo
             singleproxy["udp"] = true;
         if (!x.UnderlyingProxy.empty()) {
             singleproxy["dialer-proxy"] = x.UnderlyingProxy;
-            writeLog(LOG_TYPE_INFO, "Output dialer-proxy: " + x.UnderlyingProxy, LOG_LEVEL_DEBUG);
         }
         if (proxy_block)
             singleproxy.SetStyle(YAML::EmitterStyle::Block);
