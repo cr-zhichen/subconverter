@@ -1196,6 +1196,7 @@ void explodeClash(Node yamlnode, std::vector<Proxy> &nodes) {
         std::vector<String> alpns;
         String alpn2;
         std::string fingerprint, multiplexing, transfer_protocol, v2ray_http_upgrade;
+        std::string dialer_proxy;
         tribool udp, tfo, scv;
         bool reduceRtt, disableSni; //tuic
         std::vector<std::string> alpnList;
@@ -1593,6 +1594,12 @@ void explodeClash(Node yamlnode, std::vector<Proxy> &nodes) {
                 break;
             default:
                 continue;
+        }
+
+        // Parse dialer-proxy for all proxy types
+        if (singleproxy["dialer-proxy"].IsDefined()) {
+            singleproxy["dialer-proxy"] >>= dialer_proxy;
+            node.UnderlyingProxy = dialer_proxy;
         }
 
         node.Id = index;
