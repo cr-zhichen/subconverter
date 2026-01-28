@@ -1600,6 +1600,7 @@ void explodeClash(Node yamlnode, std::vector<Proxy> &nodes) {
         if (singleproxy["dialer-proxy"].IsDefined()) {
             singleproxy["dialer-proxy"] >>= dialer_proxy;
             node.UnderlyingProxy = dialer_proxy;
+            writeLog(LOG_TYPE_INFO, "Parsed dialer-proxy: " + dialer_proxy, LOG_LEVEL_DEBUG);
         }
 
         node.Id = index;
