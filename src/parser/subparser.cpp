@@ -1597,10 +1597,13 @@ void explodeClash(Node yamlnode, std::vector<Proxy> &nodes) {
         }
 
         // Parse dialer-proxy for all proxy types
+        writeLog(0, "=== DIALER-PROXY CHECK: Node=" + ps + " ===", LOG_LEVEL_ERROR);
         if (singleproxy["dialer-proxy"].IsDefined()) {
             singleproxy["dialer-proxy"] >>= dialer_proxy;
             node.UnderlyingProxy = dialer_proxy;
-            writeLog(LOG_TYPE_INFO, "Parsed dialer-proxy: " + dialer_proxy, LOG_LEVEL_DEBUG);
+            writeLog(0, "=== FOUND dialer-proxy: " + dialer_proxy + " ===", LOG_LEVEL_ERROR);
+        } else {
+            writeLog(0, "=== NO dialer-proxy field found ===", LOG_LEVEL_ERROR);
         }
 
         node.Id = index;
